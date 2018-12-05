@@ -10,9 +10,10 @@ var {User} = require('./models/user');
 
 var app = express();
 
-//config our middleware
+//config our middleware (app.use() takes a middleware)
 app.use(bodyParser.json());
 
+//create a new resource which comes from user, and we use a body
 app.post('/todos', (req, res) => {
     var todo = new Todo({
         text: req.body.text
@@ -23,9 +24,11 @@ app.post('/todos', (req, res) => {
     }, (e) => {
         res.status(400).send(e);
     });
-    console.log(req.body);
+   console.log(req.body);
 });
 
 app.listen(3000, () => {
     console.log('Started on port 3000');
 });
+
+module.exports = {app};
