@@ -62,7 +62,7 @@ app.delete('/todos/:id', (req, res) => {
     var id = req.params.id;
 
     if(!ObjectID.isValid(id)) {
-        return res.stetus(404).send();
+        return res.status(404).send();
     }
 
     Todo.findByIdAndRemove(id).then((todo) => {
@@ -70,7 +70,7 @@ app.delete('/todos/:id', (req, res) => {
             return res.status(404).send();
         }
 
-        res.status(200).send(todo);
+        res.status(200).send({todo});
     }).catch((e) => {
         res.status(400).send();
     })
