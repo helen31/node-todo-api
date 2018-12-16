@@ -1,7 +1,7 @@
 /**
  * Created by alena on 21/11/18.
  */
-const _=require('lodash');
+const _= require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -98,7 +98,7 @@ app.patch('/todos/:id', (req, res) => {
             return res.status(404).send();
         }
 
-            res.send({todo});
+        res.send({todo});
     }).catch((e) => {
         res.status(400).send();
     });
